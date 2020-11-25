@@ -3,6 +3,9 @@ var app = new Vue({
     data: {
         name: '',
         todo: '',
+        // updateId: '',
+        // updateName: '',
+        // updateTodo: '',
         list: [
             { id: 1, name: 'test1', todo: 'todo1' },
             { id: 2, name: 'test2', todo: 'todo2' },
@@ -23,11 +26,11 @@ var app = new Vue({
         doRemove: function(index) {
             this.list.splice(index, 1)
         },
-        doUpdate: function() {
-            this.$set(this.list, this.updateId, { 
-                id: this.updateId,
-                name: this.updateName,
-                todo: this.updateTodo,
+        doUpdate: function(index) {
+            this.$set(this.list, index, { 
+                id: index,
+                name: this.name,
+                todo: this.todo,
             })
         }
     }
