@@ -6,13 +6,41 @@
     </head>
     <body>
         <div id="app">
+            <p>新規登録</p>
             name: <input v-model="name">
+            todo: <input v-model="todo">
             <button v-on:click="doAdd">要素を追加</button>
-            <ul>
-                <li v-for="item in list" v-bind:key="item.id">
-                    ID.{{ item.id }} {{ item.name }}
-                </li>
-            </ul>            
+            <hr>
+            <p>内容更新</p>
+            ID: <input v-model="updateId">
+            name: <input v-model="updateName">
+            todo: <input v-model="updateTodo">
+            <button v-on:click="doUpdate">内容を更新</button>
+            <hr>
+            <p>一覧表示</p>
+            <table>
+                <!-- thead 表の項目名を記載する欄 -->
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Todo</th>
+                    </tr>
+                </thead>                
+                <!--
+                    tbody 表の内容を表示させる欄
+                    1行ずつ各項目を並べて表示する
+                    4つ目の要素として削除ボタンを生成
+                 -->
+                <tbody>
+                    <tr v-for="(item, index) in list" v-bind:key="item.id">
+                        <td>No.{{ item.id }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.todo }}</td>
+                        <td><button v-on:click="doRemove(index)">削除</button></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
         <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>

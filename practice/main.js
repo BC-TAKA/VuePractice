@@ -1,11 +1,12 @@
 var app = new Vue({
     el: '#app',
     data: {
-        name: 'TestPlayer',
+        name: '',
+        todo: '',
         list: [
-            { id: 1, name: 'test1' },
-            { id: 2, name: 'test2' },
-            { id: 3, name: 'test3' }
+            { id: 1, name: 'test1', todo: 'todo1' },
+            { id: 2, name: 'test2', todo: 'todo2' },
+            { id: 3, name: 'test3', todo: 'todo3' }
         ]
     },
     methods: {
@@ -16,6 +17,17 @@ var app = new Vue({
             this.list.push({
                 id: max + 1,
                 name: this.name,
+                todo: this.todo,
+            })
+        },
+        doRemove: function(index) {
+            this.list.splice(index, 1)
+        },
+        doUpdate: function() {
+            this.$set(this.list, this.updateId, { 
+                id: this.updateId,
+                name: this.updateName,
+                todo: this.updateTodo,
             })
         }
     }
