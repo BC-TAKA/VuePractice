@@ -3,11 +3,19 @@ var app = new Vue({
     data: {
         name: '',
         todo: '',
-        list: [
-            { id: 1, name: 'test1', todo: 'todo1' },
-            { id: 2, name: 'test2', todo: 'todo2' },
-            { id: 3, name: 'test3', todo: 'todo3' }
-        ]
+        list: []
+        // list: [
+        //     { id: 1, name: 'test1', todo: 'todo1' },
+        //     { id: 2, name: 'test2', todo: 'todo2' },
+        //     { id: 3, name: 'test3', todo: 'todo3' }
+        // ]
+    },
+    created: function() {
+        axios.get('todo.json').then(function(response) {
+            this.list = response.data
+        }.bind(this)).catch(function(e) {
+            console.error(e)
+        })
     },
     methods: {
         doAdd: function() {
