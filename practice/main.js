@@ -3,9 +3,6 @@ var app = new Vue({
     data: {
         name: '',
         todo: '',
-        // updateId: '',
-        // updateName: '',
-        // updateTodo: '',
         list: [
             { id: 1, name: 'test1', todo: 'todo1' },
             { id: 2, name: 'test2', todo: 'todo2' },
@@ -28,7 +25,7 @@ var app = new Vue({
         },
         doUpdate: function(index) {
             this.$set(this.list, index, { 
-                id: index,
+                id: index + 1,
                 name: this.name,
                 todo: this.todo,
             })

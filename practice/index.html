@@ -6,16 +6,11 @@
     </head>
     <body>
         <div id="app">
-            <p>新規登録</p>
+            <p>新規登録 or 内容更新</p>
             name: <input v-model="name">
             todo: <input v-model="todo">
-            <button v-on:click="doAdd">要素を追加</button>
+            <button v-on:click="doAdd">新規登録</button>
             <hr>
-            <!-- <p>内容更新</p>
-            ID: <input v-model="updateId">
-            name: <input v-model="updateName">
-            todo: <input v-model="updateTodo">            
-            <hr> -->
             <p>一覧表示</p>
             <table>
                 <!-- thead 表の項目名を記載する欄 -->
@@ -36,8 +31,8 @@
                         <td>No.{{ item.id }}</td>
                         <td>{{ item.name }}</td>
                         <td>{{ item.todo }}</td>
-                        <td><button v-on:click="doUpdate">内容を更新</button></td>
-                        <td><button v-on:click="doRemove(index)">削除</button></td>
+                        <td><button v-on:click="doUpdate(index)">内容更新</button></td>
+                        <td><button v-on:click="doRemove(index)">No.{{ item.id }}を削除</button></td>
                     </tr>
                 </tbody>
             </table>
